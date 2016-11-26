@@ -5,14 +5,10 @@
 // The port number will be provided to you by expressworks as the first argument of
 // the application, ie. process.argv[2].
 
-var express = require('express');
-var app = express();
-var port = process.argv[2];
+const express = require('express');
+const app = express();
+const port = process.argv[2];
 
-app.get('/home', 
-        function(request, response) {
-            response.end('Hello World!');
-        }
-       );
-       
+app.get('/home', (request, response) => response.end('Hello World!'));
+
 app.listen(port);
