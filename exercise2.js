@@ -17,12 +17,12 @@
 //       </body>
 //     </html>
 
-var express = require('express');
-var path = require('path');
-var app = express();
-var port = process.argv[2];
-var indexPath = process.argv[3];
+const express = require('express');
+const path = require('path');
+const app = express();
+const port = process.argv[2];
+const indexPath = process.argv[3];
 
-app.use(express.static(indexPath||path.join(__dirname, 'public')));
-       
+app.use(express.static(indexPath || path.join(__dirname, 'public')));
+
 app.listen(port);
