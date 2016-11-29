@@ -18,11 +18,11 @@
 //     </html>
 
 const express = require('express');
-const path = require('path');
+const { join } = require('path');
 const app = express();
 const port = process.argv[2];
 const indexPath = process.argv[3];
 
-app.use(express.static(indexPath || path.join(__dirname, 'public')));
+app.use(express.static(indexPath || join(__dirname, 'public')));
 
 app.listen(port);
