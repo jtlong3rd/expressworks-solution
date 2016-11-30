@@ -6,20 +6,16 @@
 
 // The view should show the current date using toDateString.
 
-var express = require('express');
-var jade = require('jade');
-var path = require('path');
-var app = express();
-var port = process.argv[2];
-var indexPath = process.argv[3];
+const express = require('express');
+const { join} = require('path');
+const app = express();
+const port = process.argv[2];
+const indexPath = process.argv[3];
 
-app.get('/home', 
-        function(request, response) {
-            app.set('views', indexPath||path.join(__dirname, 'templates'));
-            app.set('view engine', 'jade');
-            
-            response.render('index', { date: new Date().toDateString() });
-        }
-       );
-       
+app.get('/home', (request, response) => {
+  app.set('views', indexPath || join(__dirname, 'templates'));
+  app.set('view engine', 'jade');
+  response.render('index', { date: new Date().toDateString() });
+});
+
 app.listen(port);
