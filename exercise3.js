@@ -7,7 +7,7 @@
 // The view should show the current date using toDateString.
 
 const express = require('express');
-const { join} = require('path');
+const { join } = require('path');
 const app = express();
 const port = process.argv[2];
 const indexPath = process.argv[3];
