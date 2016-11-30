@@ -26,23 +26,21 @@
 
 var express = require('express');
 var app = express();
-var bodyparser = require('body-parser');
+const { urlencoded } = require('body-parser');
 var port = process.argv[2];
 var directory = process.argv[3];
 
 app.use(require('stylus').middleware(directory));
 app.use(express.static(directory));
 
-app.post('/form', 
-        function(request, response) {
-            var urlencodedParser = bodyparser.urlencoded({extended: false});
-            urlencodedParser(request, response, function(err) {if (err) 
-                                                                throw err;
-                                                                
-                                                               response.send(request.body.str.split('').reverse().join(''));
-                                                              }
-                            );
-        }
-       );
-       
+app.post('/form', (request, response) => {
+  urlencoded({extended: false})(request, response, err => {
+    if (err) {
+      throw err;
+    }
+
+    response.send(request.body.str.split('').reverse().join(''));
+  });
+});
+
 app.listen(port);
