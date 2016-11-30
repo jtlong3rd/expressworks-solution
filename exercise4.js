@@ -5,12 +5,11 @@
 
 const express = require('express');
 const app = express();
-const bodyparser = require('body-parser');
+const { urlencoded } = require('body-parser');
 const port = process.argv[2];
 
 app.post('/form', (request, response) => {
-  var urlencodedParser = bodyparser.urlencoded({ extended: false });
-  urlencodedParser(request, response, err => {
+  urlencoded({ extended: false })(request, response, err => {
     if (err) {
       throw err;
     }
