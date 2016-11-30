@@ -17,6 +17,10 @@ const app = express();
 const port = process.argv[2];
 const filename = process.argv[3];
 
-app.post('/search', (request, response) => response.json(JSON.parse(readFile(filename))));
+app.get('/books', (request, response) => {
+  readFile(filename, (err, data) => {
+    response.json(JSON.parse(data));
+  });
+});
 
 app.listen(port);
