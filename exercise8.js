@@ -11,16 +11,12 @@
 
 // Everything should match the '/books' resource path.
 
-var express = require('express');
-var fs = require('fs');
-var app = express();
-var port = process.argv[2];
-var filename = process.argv[3];
+const express = require('express');
+const { readFile } = require('fs');
+const app = express();
+const port = process.argv[2];
+const filename = process.argv[3];
 
-app.post('/search', 
-         function(request, response) {
-             response.json(JSON.parse(fs.readFile(filename)));
-         }
-        );
-       
+app.post('/search', (request, response) => response.json(JSON.parse(readFile(filename))));
+
 app.listen(port);
